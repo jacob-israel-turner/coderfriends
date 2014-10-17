@@ -1,0 +1,39 @@
+{
+  "name": "coderfriends",
+  "version": "1.0.0",
+  "description": "A place to view your coder friends from Github",
+  "main": "server.js",
+  "dependencies": {
+    "cors": "^2.4.2",
+    "express": "^4.9.7",
+    "express-session": "^1.9.0",
+    "github": "^0.2.2",
+    "passport": "^0.2.1",
+    "passport-github": "^0.1.5",
+    "request": "^2.45.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devmountain/coderfriends"
+  },
+  "keywords": [
+    "coder",
+    "friend",
+    "github",
+    "git",
+    "app",
+    "server",
+    "node"
+  ],
+  "author": "Jacob Turner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devmountain/coderfriends/issues"
+  },
+  "homepage": "https://github.com/devmountain/coderfriends"
+}

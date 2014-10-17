@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app='friendsApp'>
+<head>
+	<link href='style.css' rel='stylesheet'>
+</head>
+<body ng-controller='mainCtrl'>
+	<h2><xmp><friends type='coder'/></xmp></h2>
+	<span>Logged in as: {{user.login}}</span>
+	<br>
+	<img class='profile-pic' ng-src='{{user.avatar_url}}'></image>
+	<br>
+	<a href='/auth/github'>Login with Github</a>
+	<div ng-view></div>
+
+
+	<script src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.js'></script>
+	<script src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-route.js'></script>
+
+	<script src='app/main/app.js'></script> 
+
+	<script src='app/controllers/mainCtrl.js'></script>
+	<script src='app/controllers/homeCtrl.js'></script>
+	<script src='app/services/github-service.js'></script>
+
+
+</body>
+</html>
