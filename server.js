@@ -73,7 +73,7 @@ app.get('/auth/github/callback', passport.authenticate('github',
 );
 
 app.get('/api/github/following', function(req, res){
-	request({url: "https://api.github.com/users/" + user.username + "/followers", headers: {"User-Agent":user.username}, params: user.accessToken}, function(error, response, body) {
+	request({url: "https://api.github.com/users/" + user.username + "/followers?client_id=6f8444cbf25af8b3ec3d&client_secret=a2cb8cc72ca09856cef18744f82d28291a7e3346", headers: {"User-Agent":user.username}, params: user.accessToken}, function(error, response, body) {
 		res.status(200).send(body);
 	});
 });

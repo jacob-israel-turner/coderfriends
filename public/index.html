@@ -2,12 +2,21 @@
 <html ng-app='friendsApp'>
 <head>
 	<link href='style.css' rel='stylesheet'>
+	<link href='normalize.css' rel='stylesheet'>
+	<link href='http://fonts.googleapis.com/css?family=PT+Mono|Droid+Serif:400,700' rel='stylesheet' type='text/css'>
 </head>
-<body ng-controller='mainCtrl'>
-	<h2><xmp><friends type='coder'/></xmp></h2>
-	<span>Logged in as: {{user.login}}</span>
-	<br>
-	<img class='profile-pic' ng-src='{{user.avatar_url}}'></image>
+<body class='main-container' ng-controller='mainCtrl'>
+	<header class='header'>
+		<h2 id='title'>
+		&lt<span id='title-friends'>friends </span><span id='title-type'>type</span>=<span id='title-coder'>'coder'</span>/&gt</h2>
+		<span class='logged-in'>Logged in as:</span>
+	</header>
+	<div  id='user-pic'>
+		<img class='profile-pic' ng-src='{{user.avatar_url}}'>
+		</image>
+		<br>
+		<a ng-href='{{user.html_url}}'>{{user.login}}</a>
+	</div>
 	<br>
 	<a href='/auth/github'>Login with Github</a>
 	<div ng-view></div>
