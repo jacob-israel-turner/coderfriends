@@ -1,1 +1,7 @@
 <h3>This is home!</h3>
+<div class='container' ng-repeat='friend in friendArray'>
+	<div class='friend-container'>
+		<a ng-href='{{friend.html_url}}'><img class='friend-pic' ng-src='{{friend.avatar_url}}'></image></a>
+		<a ng-href='/#/friend/{{friend.login}}'>{{friend.login}}</a>
+	</div>
+</div>

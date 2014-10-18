@@ -14,5 +14,12 @@ app.service('githubService', function($http){
 			method: 'GET',
 			url: 'http://localhost:9007/api/github/following'
 		})
-	}
+	};
+	this.getActivity = function(username){
+		return $http(
+		{
+			method: 'GET',
+			url: 'http://localhost:9007/api/github/' + username + '/activity'
+		})
+	};
 });

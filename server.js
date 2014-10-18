@@ -49,6 +49,8 @@ passport.use(new GithubStrategy({
 	},
 	function(accessToken, refreshToken, profile, done) {
 		user = profile;
+		user.accessToken = accessToken;
+		user.refreshToken = refreshToken;
 		return done(null, profile);
 	}
 ));
@@ -58,7 +60,7 @@ function requireAuth(req, res, next){
 		res.status(403).end();
 	}
 	return next();
-}
+};
 
 app.get('/auth/github', passport.authenticate('github'));
 app.get('/auth/github/callback', passport.authenticate('github',
@@ -71,14 +73,19 @@ app.get('/auth/github/callback', passport.authenticate('github',
 );
 
 app.get('/api/github/following', function(req, res){
-	request({url: "https://api.github.com/users/" + user.username + "/followers", headers: {"User-Agent":user.username}}, function(error, response, body) {
-		console.log(body)
-		res.status(200).send(JSON.stringify(body));
+	request({url: "https://api.github.com/users/" + user.username + "/followers", headers: {"User-Agent":user.username}, params: user.accessToken}, function(error, response, body) {
+		res.status(200).send(body);
 	});
 });
 
 app.get('/user',  function(req, res){
 	res.status(200).send(JSON.stringify(user));
+});
+
+app.get('/api/github/:username/activity', function(req, res){
+	request({url: "https://api.github.com/users/" + req.params.username + "/events", headers: {"User-Agent":user.username}, params: user.accessToken}, function(error, response, body) {
+		res.status(200).send(body);
+	});
 })
 
 app.listen(port, function(){
